@@ -65,3 +65,32 @@ Compare `sys.executable` before and after activation. Explain the difference usi
 - [Team documentation](README.md)
 
 AI disclosure: AI assisted with this draft and command selection. Add your own verification and learning experience after practice.
+
+## What I learned during setup
+
+I first ran `py -m venv djvenv` while PowerShell was in `C:\Windows\system32`. The environment activated, but it was in the wrong folder for my project. I deactivated it, switched to my `django-portfolio` folder, and created the environment there instead.
+
+Before creating an environment, check your location:
+
+```powershell
+Get-Location
+```
+
+If an environment is already active, run `deactivate` before switching projects. For a project folder named `django-portfolio` in your Windows user directory, navigate with:
+
+```powershell
+Set-Location "$env:USERPROFILE\django-portfolio"
+```
+
+That folder must already exist. Use your actual project path if it is different. Then create and activate `djvenv` using the commands above.
+
+I checked the result with:
+
+```powershell
+python --version
+python -c "import sys; print(sys.executable)"
+```
+
+My screenshot showed Python 3.14.7, `(djvenv)` in the prompt, and an interpreter path ending in `django-portfolio\djvenv\Scripts\python.exe`. Checking the path helped confirm that I was using the environment inside my project. This verifies the Python environment; it does not show that Django is installed or that its server is running.
+
+AI helped me identify the directory mistake and work through the correction.

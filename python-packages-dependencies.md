@@ -81,3 +81,25 @@ Explain one installed package's role, then compare `pip list` with `requirements
 - [Team documentation](README.md)
 
 AI disclosure: AI assisted with this draft and examples. Add what you personally ran, verified, and learned.
+
+## How requirements relate to compatibility
+
+Checking compatibility comes first: choose a Django release that supports the project's Python version. After installing and checking the project dependencies, save their versions in `requirements.txt`. Another developer can use that file to install the recorded packages in a fresh environment.
+
+The file does not install or select the Python interpreter. Record the Python version separately in the project's README, and check it before installing requirements:
+
+```bash
+python --version
+python -m pip install -r requirements.txt
+python -m pip check
+```
+
+For my setup, the activated environment screenshot showed Python 3.14.7. That screenshot alone does not confirm the installed Django version. To check Django in an activated environment, run:
+
+```bash
+python -m django --version
+```
+
+If Python reports that Django is missing, it is not available to that interpreter. Verify the selected environment before installing the chosen compatible release.
+
+Sharing `requirements.txt` is more practical than sharing `djvenv`: the file is small and records dependencies, while the environment includes installed files and paths tied to a particular computer. Each teammate should create their own environment and install the requirements there.

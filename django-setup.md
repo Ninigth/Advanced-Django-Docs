@@ -217,3 +217,103 @@ python -m pip freeze > requirements.txt
 ```
 
 Another developer can use the same file to install the same packages instead of receiving the virtual environment folder.
+
+## .gitignore
+
+The `.gitignore` file tells Git which files or folders should not be uploaded to Github.
+
+For this project:
+```text
+djvenv/
+__pycache/
+.DS_Store
+```
+
+The `djvenv/` folder should not be uploaded because it's too large and is made for the local computer. Another developer can create their own virtual environment and install the needed packages using `requirements.txt`.
+
+## Git and Github
+
+Git tracks changes to files on the computer.
+
+Github stores the Git repository online so it can be shared and accessed by other developers.
+
+### Check Repository Status
+```powershell
+git status
+```
+
+### Add Files
+```powershell
+git add .
+```
+
+### Commit Files
+```powershell
+git push
+```
+
+## Common Problems and Troubleshooting
+
+### Problem 1: PowerShell says Running Scripts Is Disabled
+
+Example problem:
+```text
+running scripts is disabled on this system
+```
+
+Fix:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+```
+
+Then activate the virtual environment again:
+```powershell
+.\djvenv\Scripts\Activate.ps1
+```
+
+### Problem 2: Django Is Not Found
+
+If this command:
+```powershell
+python -m django --version
+```
+
+shows:
+```text
+No module named django
+```
+
+then Django is not installed in the active virtual environment.
+
+Make sure `(djvenv)` appears in the terminal, then run:
+```powershell
+python -m pip install django
+```
+
+## Useful Commands
+
+| Task | Command |
+|---|---|
+| Check Python version | `python --version` |
+| Create virtual environment | `py -m venv djvenv` |
+| Activate virtual environment | `.\djvenv\Scripts\Activate.ps1` |
+| Install Django | `python -m pip install django` |
+| Check Django version | `python -m django --version` |
+| Create Django project | `django-admin startproject django_project .` |
+| Start server | `python manage.py runserver` |
+| Stop server | `Ctrl + C` |
+| Deactivate environment | `deactivate` |
+| List installed packages | `python -m pip freeze` |
+| Create requirements.txt | `python -m pip freeze > requirements.txt` |
+| Check Git status | `git status` |
+| Add files to Git | `git add .` |
+| Commit changes | `git commit -m "Set up Django development environment"` |
+| Push to GitHub | `git push` |
+
+## Reliable Resources
+
+- [Django Documentation](https://docs.djangoproject.com/)
+- [Django Installation FAQ](https://docs.djangoproject.com/en/stable/faq/install/)
+- [Python Documentation](https://docs.python.org/)
+- [Git Documentation](https://git-scm.com/doc)
+- [GitHub Documentation](https://docs.github.com/)

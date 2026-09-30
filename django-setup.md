@@ -21,7 +21,7 @@ This saves considerable time because Django handles much of the basic setup for 
 
 Before installing Django, it's important to make sure that the Python version and Django version are working together.
 
-For this project:
+The original contributor recorded these versions; verify your own environment rather than treating them as a new installation check:
 
 - Python version: `3.14.7`
 - Django version: `6.1.1`
@@ -161,7 +161,7 @@ python manage.py runserver
 
 The terminal should show an address similar to:
 ```text
-https://127.0.0.1:8000/
+http://127.0.0.1:8000/
 ```
 
 Open that address in a web browser.
@@ -181,10 +181,10 @@ When returning to the project later:
 ### 1. Go to the project folder
 
 ```powershell
-cd "C:\Users\...\Github\cd django-portfolio
+Set-Location "$env:USERPROFILE\django-portfolio"
 ```
 
-### 2. Activate the virutal environment
+### 2. Activate the virtual environment
 
 ```powershell
 .\djvenv\Scripts\Activate.ps1
@@ -220,12 +220,12 @@ Another developer can use the same file to install the same packages instead of 
 
 ## .gitignore
 
-The `.gitignore` file tells Git which files or folders should not be uploaded to Github.
+The `.gitignore` file excludes matching untracked files from normal staging. It does not remove files already tracked by Git.
 
 For this project:
 ```text
 djvenv/
-__pycache/
+__pycache__/
 .DS_Store
 ```
 
@@ -249,6 +249,7 @@ git add .
 
 ### Commit Files
 ```powershell
+git commit -m "Set up Django project"
 git push
 ```
 
@@ -317,3 +318,39 @@ python -m pip install django
 - [Python Documentation](https://docs.python.org/)
 - [Git Documentation](https://git-scm.com/doc)
 - [GitHub Documentation](https://docs.github.com/)
+
+## Project structure and request flow
+
+Additional guidance and corrections by **ISA SAMIEZADE-YAZD**.
+
+| File | Purpose |
+| --- | --- |
+| `manage.py` | Runs project commands such as checks and the development server |
+| `settings.py` | Configures installed apps, database connections, and other settings |
+| `urls.py` | Maps requested paths to views |
+| `__init__.py` | Marks the directory as a Python package |
+| `asgi.py` and `wsgi.py` | Provide entry points for compatible application servers |
+
+A project combines configuration and apps. An app implements a feature, such as a portfolio or blog. Django supplies reusable structure so each project does not have to build request handling and configuration from scratch.
+
+The browser is the client. It requests a URL; Django handles the request and returns a response. `localhost` refers to the same computer, and `127.0.0.1` is an IPv4 loopback address. A rendered page plus a successful request in the server log provides evidence of a response. GitHub Pages serves static files and cannot run the Django Python server.
+
+## Check setup and troubleshoot
+
+Run in the directory containing `manage.py`, with the environment active:
+
+```bash
+python manage.py check
+python manage.py migrate
+python manage.py runserver
+```
+
+`migrate` applies database migrations; commit application migration source files with the project. The development server is for local development, not public production hosting. If port 8000 is busy, stop your previous server or try `python manage.py runserver 8001` and open port 8001. If `manage.py` is missing, check your current folder before generating another project. Avoid names such as `django.py` that can shadow installed modules.
+
+On macOS/Linux create the environment with `python3 -m venv djvenv` and activate with `source djvenv/bin/activate`. After activation the `python -m ...` commands are the same. For a file encoding-safe requirements export on Windows, see [packages and dependencies](python-packages-dependencies.md).
+
+Check compatibility against the documentation for the actual installed Django version. The original 6.1.1 example is not a claim that every reader has installed it.
+
+Sources: [Django tutorial](https://docs.djangoproject.com/en/6.0/intro/tutorial01/), [Django installation FAQ](https://docs.djangoproject.com/en/6.1/faq/install/).
+
+[Back to documentation](README.md)

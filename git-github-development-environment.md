@@ -589,3 +589,54 @@ git push
 - [Git Documentation](https://git-scm.com/doc)
 - [GitHub Documentation](https://docs.github.com/)
 - [GitHub Git Guide](https://github.com/git-guides)
+
+## Branch workflow and reviewing changes
+
+Additional guidance by **ISA SAMIEZADE-YAZD**. Start with a clean working tree. Fetch updates before comparing with the remote, since local remote-tracking information can be stale.
+
+```bash
+git switch main
+git pull --ff-only
+git switch -c docs/accessibility
+# Edit accessibility.md, then inspect and save the change.
+git diff
+git add accessibility.md
+git diff --cached
+git commit -m "Explain keyboard accessibility"
+git push -u origin docs/accessibility
+```
+
+Open a pull request on GitHub to review and merge the branch. If a pull or push is rejected, fetch and inspect the difference; do not force-push over shared work. For a merge conflict, inspect both versions, resolve the marked section, remove conflict markers, check the result, and commit the resolution. Save or commit unrelated changes before starting a merge.
+
+## GitHub Desktop workflow
+
+Clone the existing repository through **File > Clone repository**, choosing its URL and a local folder. Select the correct repository, fetch and pull incoming changes, and create a branch before editing. In Changes, review the diff and select only intended files. Enter a descriptive summary, commit to the current branch, and push or publish the branch. Create a pull request when ready for review.
+
+A commit is local; pushing copies committed history to GitHub. Uncommitted and ignored files are not backed up by a push. Confirm the branch and files on GitHub after publishing. Capture your own Changes and History screenshots if the assignment asks for evidence; these instructions are not screenshot evidence.
+
+## What to track
+
+Track source code, templates, static assets, dependency files, documentation, and Django migration files. Ignore virtual environments, caches, local secrets, and disposable local databases. Example additions for an application `.gitignore`:
+
+```gitignore
+djvenv/
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+db.sqlite3
+```
+
+An example environment file must contain placeholders, not actual credentials. `.gitignore` does not untrack previously committed files. `git rm --cached path/to/file` removes a specific file from the index while retaining it locally; inspect before committing. Removing a leaked secret from the current version does not remove it from history, so revoke or rotate the credential too.
+
+## Publishing documentation
+
+For branch-based GitHub Pages publishing, a repository administrator selects the branch and folder under Settings > Pages. Review the deployment result and test the published links. A GitHub repository link and a Pages site link are different deliverables. Pages publishes static content; a Django application needs a server that can execute Python.
+
+See [packages and dependencies](python-packages-dependencies.md) for requirements export across PowerShell versions.
+
+Sources: [Git tutorial](https://git-scm.com/docs/gittutorial), [GitHub Desktop cloning](https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop), [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
+
+[Back to documentation](README.md)

@@ -101,7 +101,7 @@ Some common semantic HTML elements are:
 
 ## The Header Element
 
-The '<header>' element is usually used for introductory content.
+The `header` element is usually used for introductory content.
 
 Example:
 ```html
@@ -119,7 +119,7 @@ A header may contain:
 
 ## The Navigation Element
 
-The '<nav>' element is used for navigation links.
+The `nav` element is used for navigation links.
 
 Example:
 ```html
@@ -132,7 +132,7 @@ Example:
 
 ## The Main Element
 
-The '<main>' element contains the main content of the page.
+The `main` element contains the main content of the page.
 
 Example:
 ```html
@@ -148,7 +148,7 @@ There should normally only be one main content area on a page.
 
 ## The Section Element
 
-The '<section>' element is used to group related content.
+The `section` element is used to group related content.
 
 Example:
 ```html
@@ -164,7 +164,7 @@ A section should usually have a heading that explains what the section is about.
 
 ## The Article Element
 
-The '<article>' element is used for content that can stand on its own.
+The `article` element is used for content that can stand on its own.
 
 Examples could include:
 - a blog post
@@ -185,7 +185,7 @@ Example:
 
 ## The Aside Element
 
-The '<aside>' element is used for information that is related to the main content but is not part of the main topic.
+The `aside` element is used for information that is related to the main content but is not part of the main topic.
 
 Example:
 ```html
@@ -200,7 +200,7 @@ Example:
 
 ## The Footer Element
 
-The '<footer>' element is usually used near the bottom of a page or section.
+The `footer` element is usually used near the bottom of a page or section.
 
 Example:
 ```html
@@ -250,7 +250,7 @@ This gives the page a clear structure.
 
 ## Paragraphs
 
-Paragraphs use the '<p>' element.
+Paragraphs use the `p` element.
 
 Example:
 ```html
@@ -266,7 +266,7 @@ HTML includes ordered and unordered lists.
 
 ### Unordered List
 
-Use '<ul>' when the order does not matter.
+Use `ul` when the order does not matter.
 
 ```html
 <ul>
@@ -279,7 +279,7 @@ This normally appears as bullet points.
 
 ### Ordered List
 
-Use '<ol>' when the order matters.
+Use `ol` when the order matters.
 
 ```html
 <ol>
@@ -292,7 +292,7 @@ This normally appears as a numbered list.
 
 ## Links
 
-Links use the '<a>' element.
+Links use the a element.
 
 Example 1:
 
@@ -316,7 +316,7 @@ The first example gives the user more information about the link.
 
 ## Images
 
-Images use the `<img>` element.
+Images use the `img` element.
 
 Example:
 ```html
@@ -333,7 +333,7 @@ Alternative text is important because a screen reader can read it for someone wh
 
 ## Figure and Figcaption
 
-An image and its caption can be grouped together using `<figure>` and `<figcaption>`.
+An image and its caption can be grouped together using `figure` and `figcaption`.
 
 Example:
 ```html
